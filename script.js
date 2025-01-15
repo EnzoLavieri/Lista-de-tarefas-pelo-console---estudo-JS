@@ -9,6 +9,21 @@ function adiconarTarefa(tarefa) {
   console.log(`Tarefa "${tarefa} adicionada a lista.`);
 }
 
+/*A função listarTarefas verifica se o array tarefas está vazio, 
+se estiver, ela imprime uma mensagem dizendo que não há tarefas.
+Se houver tarefas, ela usa o método forEach() para percorrer o 
+array e imprimir cada tarefa, junto com seu número (índice + 1). */
+function listarTarefas() {
+  if (listaDeTarefas.length === 0) {
+    console.log("Nao ha tarefas na lista.");
+  } else {
+    console.log("Lista de tarefas:");
+    listaDeTarefas.forEach((tarefa, index) => {
+      console.log(`${index + 1}. ${tarefa}`);
+    });
+  }
+}
+
 alert("Bem-vindo(a) a lista de tarefas!");
 alert("Para adiconar uma nova tarefa, escreva `Adicionar`");
 alert("Para Remover uma tarefa, escreva `Remover`");
