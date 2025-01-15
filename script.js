@@ -49,25 +49,28 @@ function removerTarefa() {
 }
 
 function menu() {
-  let opcao = prompt(
-    "Escolha uma opção:\n1. Adicionar Tarefa\n2. Listar Tarefas\n3. Remover Tarefa\n4. Sair "
-  );
-  switch (opcao) {
-    case `1`:
-      adiconarTarefa();
-      break;
-    case `2`:
-      listarTarefas();
-      break;
-    case `3`:
-      removerTarefa();
-      break;
-    case `4`:
-      alert("Saindo...");
-      break;
-    default:
-      alert("Opcao invalida.");
-  }
+  let opcao;
+  do {
+    opcao = prompt(
+      "Escolha uma opção:\n1. Adicionar Tarefa\n2. Listar Tarefas\n3. Remover Tarefa\n4. Sair "
+    );
+    switch (opcao) {
+      case `1`:
+        adiconarTarefa();
+        break;
+      case `2`:
+        listarTarefas();
+        break;
+      case `3`:
+        removerTarefa();
+        break;
+      case `4`:
+        alert("Saindo...");
+        break;
+      default:
+        alert("Opcao invalida.");
+    }
+  } while (opcao !== `4`);
 }
 
 alert("Bem-vindo(a) a lista de tarefas!");
