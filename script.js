@@ -24,6 +24,21 @@ function listarTarefas() {
   }
 }
 
+/*A função removerTarefa recebe um índice e verifica se ele é
+válido (se está dentro do intervalo de tarefas disponíveis).
+Se o índice for válido, usamos o método splice() para remover a 
+tarefa correspondente ao índice (lembrando que o índice do array
+começa em 0, então subtraímos 1 do índice informado).
+A função imprime uma mensagem confirmando que a tarefa foi removida. */
+function removerTarefa(indice) {
+  if (indice < 1 || indice > listaDeTarefas.length) {
+    console.log("Indice invalido");
+  } else {
+    let tarefaRemovida = listaDeTarefas.splice(-1, 1);
+    console.log(`Tarefa ${tarefaRemovida} removida`);
+  }
+}
+
 alert("Bem-vindo(a) a lista de tarefas!");
 alert("Para adiconar uma nova tarefa, escreva `Adicionar`");
 alert("Para Remover uma tarefa, escreva `Remover`");
