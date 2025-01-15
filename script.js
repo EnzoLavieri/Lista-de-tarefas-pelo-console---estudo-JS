@@ -1,12 +1,17 @@
 // Criacao da variável tarefas, que é um array vazio. Esse array vai armazenar as tarefas que você adicionar.
 let listaDeTarefas = [];
 
-//A função adicionarTarefa recebe um parâmetro tarefa, que será uma string com a descrição da tarefa.
-//A função usa o método push() para adicionar a tarefa no final do array tarefas.
-//Em seguida, é exibida uma mensagem no console confirmando que a tarefa foi adicionada.
-function adiconarTarefa(tarefa) {
-  listaDeTarefas.push(tarefa);
-  console.log(`Tarefa "${tarefa} adicionada a lista.`);
+/*A função prompt() abre uma caixa de diálogo para o usuário digitar a tarefa.
+Se o usuário digitar algo (i.e., tarefa não for null nem uma string vazia), a tarefa é adicionada ao array.
+Caso o usuário cancele o prompt ou não digite nada, uma mensagem é exibida no console. */
+function adiconarTarefa() {
+  let tarefa = prompt("Digite a tarefa que deseja adicionar:");
+  if (tarefa) {
+    listaDeTarefas.push(tarefa);
+    console.log(`Tarefa "${tarefa}" adicionada a lista.`);
+  } else {
+    console.log("Voce nao escreveu uma tarefa.");
+  }
 }
 
 /*A função listarTarefas verifica se o array tarefas está vazio, 
@@ -30,8 +35,12 @@ Se o índice for válido, usamos o método splice() para remover a
 tarefa correspondente ao índice (lembrando que o índice do array
 começa em 0, então subtraímos 1 do índice informado).
 A função imprime uma mensagem confirmando que a tarefa foi removida. */
-function removerTarefa(indice) {
-  if (indice < 1 || indice > listaDeTarefas.length) {
+function removerTarefa() {
+  listarTarefas();
+  let indice = prompt("Digite o numero da tarefa que deseja remover:");
+  // Convertemos o valor digitado para um número inteiro
+  indice = parseInt(indice, 10);
+  if (isNaN(indice) || indice < 1 || indice > listaDeTarefas.length) {
     console.log("Indice invalido");
   } else {
     let tarefaRemovida = listaDeTarefas.splice(-1, 1);
@@ -39,8 +48,27 @@ function removerTarefa(indice) {
   }
 }
 
+function menu() {
+  let opcao = prompt(
+    "Escolha uma opção:\n1. Adicionar Tarefa\n2. Listar Tarefas\n3. Remover Tarefa\n4. Sair "
+  );
+  switch (opcao) {
+    case `1`:
+      adiconarTarefa();
+      break;
+    case `2`:
+      listarTarefas();
+      break;
+    case `3`:
+      removerTarefa();
+      break;
+    case `4`:
+      alert("Saindo...");
+      break;
+    default:
+      alert("Opcao invalida.");
+  }
+}
+
 alert("Bem-vindo(a) a lista de tarefas!");
-alert("Para adiconar uma nova tarefa, escreva `Adicionar`");
-alert("Para Remover uma tarefa, escreva `Remover`");
-alert("Para sair, escreva `Sair`");
-tipoTarefa = prompt("Oque voce deseja fazer? (Adicionar | Remover | Sair)");
+menu();
